@@ -9,6 +9,7 @@
 
 import os
 import csv
+#import numpy
 
 #print(os.getcwd())
 file = os.path.join('Resources', 'budget_data.csv')
@@ -17,19 +18,24 @@ file = os.path.join('Resources', 'budget_data.csv')
 with open(file, newline='') as csvfile:
 	csvreader = csv.reader(csvfile, delimiter=",")
 	csvheader = next(csvreader)
-	print(f'CSV Header {csvheader}')
+	#print(f'CSV Header {csvheader}')
+	next(csvreader) #skips header so it's not added to the list
 
 	months=[]
-	#netTotal[]
+	netTotal=[]
 
 	for row in csvfile:
 		months.append(row[0])
+		netTotal.append(row[1])
 
-	print(f'''Financial Analysis \n 
-		 -------------------------------- \n
-		Total Months: {len(months)} \n  
-		Total:   \n 
-		Average Change: \n 
-		Greatest Increase in Profits: \n  
-		Greatest Decrease in Profits:  ''')
+	netTotal = map(float, netTotal)
+	#net = [float(i) for i in netTotal]
+
+	print('Financial Analysis \n') 
+	print('-------------------------------- \n')	 
+	print(f' Total Months: {len(months)} \n ')	
+	print(f' Total:  {sum(netTotal)} \n ')	
+	print(f' Average Change: {(sum(netTotal))/netTotal} \n ')
+	print(f' Greatest Increase in Profits: {max(netTotal)} \n ')
+	print(f' Greatest Decrease in Profits: {min(netTotal)}')
 
