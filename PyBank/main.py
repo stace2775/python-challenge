@@ -1,5 +1,6 @@
 ## Description:
-#
+#	PYBANK homework assignment.  This script pulls data from budget_data.csv and returns
+#	a summary to the terminal and to a PyBank_Summary.csv file.  
 #
 # Modification History:
 #	DD-MM-YYY 	Author			Description
@@ -83,9 +84,6 @@ with open(file, newline='') as csvfile:
 	
 	
 	
-	#print(f' Net Total: {}')
-
-	#print(lastval)
 	
 	
 
