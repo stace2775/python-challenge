@@ -9,33 +9,95 @@
 
 import os
 import csv
-#import numpy
 
-#print(os.getcwd())
-file = os.path.join('Resources', 'budget_data.csv')
-
+curdir = os.getcwd()
+file = os.path.join(curdir, 'Resources', 'budget_data.csv')
 
 with open(file, newline='') as csvfile:
 	csvreader = csv.reader(csvfile, delimiter=",")
 	csvheader = next(csvreader)
 	#print(f'CSV Header {csvheader}')
-	next(csvreader) #skips header so it's not added to the list
+	#next(csvreader) #skips header so it's not added to the list
 
 	months=[]
 	netTotal=[]
+	diffs=[]
+	
+	firstval = 0
+	maxval = 0
+	minval = 9999999
 
-	for row in csvfile:
+	for row in csvreader:
+
 		months.append(row[0])
-		netTotal.append(row[1])
+		netTotal.append(int(row[1]))
 
-	netTotal = map(float, netTotal)
-	#net = [float(i) for i in netTotal]
+		diffval = int(row[1])-firstval
+		firstval = int(row[1])
+		diffs.append(diffval)
+		if diffval > maxval:
+			maxval = diffval
+			maxdate = row[0]
+		if diffval < minval:
+			minval = diffval
+			mindate = row[0]
 
+
+	#print(diffs[1:])
+
+	#zipdiffs = zip(months, diffs)
+	#print(set(zipdiffs))
+	#for x in zipdiffs:
+
+	#print(min(zipdiffs))
+		
+
+		
+#Print Financial Analysis to the terminal
 	print('Financial Analysis \n') 
 	print('-------------------------------- \n')	 
-	print(f' Total Months: {len(months)} \n ')	
-	print(f' Total:  {sum(netTotal)} \n ')	
-	print(f' Average Change: {(sum(netTotal))/netTotal} \n ')
-	print(f' Greatest Increase in Profits: {max(netTotal)} \n ')
-	print(f' Greatest Decrease in Profits: {min(netTotal)}')
+
+#The total number of months included in the dataset
+	print(f' Total Months: {len(months)} \n ')
+
+#The net total amount of "Profit/Losses" over the entire period
+	#print('Net Total: $' + sum(float(x) for x in netTotal) + ' \n')
+	print(f'Net Total: {sum(netTotal)} \n')
+
+#The average of the changes in "Profit/Losses" over the entire period
+	print(f' Average Change:  {sum(diffs[1:])/len(diffs[1:])} \n')	
+	
+#The greatest increase in profits (date and amount) over the entire period
+	print(f' Greatest Increase in Profits: {maxdate, maxval} \n ')
+
+
+#The greatest decrease in losses (date and amount) over the entire period	
+	print(f' Greatest Decrease in Losses: {mindate, minval} \n ')
+	
+#Export the Financial Analysis to a text file
+	
+	
+	
+	
+	
+	
+	
+	
+	#print(f' Net Total: {}')
+
+	#print(lastval)
+	
+	
+
+
+
+
+	
+	
+
+
+
+
+
+
 
