@@ -67,8 +67,8 @@ print(f' Total Votes: {votecount} \n ')
 print('-------------------------------- \n')
 
 #A complete list of candidates who received votes
-print(f' Candidates: {(candidates)} \n ')
-print('-------------------------------- \n')
+#print(f' Candidates: {(candidates)} \n ')
+#print('-------------------------------- \n')
 
 #The percentage of votes each candidate won
 print(f'Khan: {(Khancount/votecount):%} percent of the vote, with {Khancount} votes total. \n')
@@ -99,8 +99,8 @@ with open(file, 'w') as txtfile:
 	txtfile.write('-------------------------------- \n')	 
 	txtfile.write(f' Total Votes: {votecount} \n ')
 	txtfile.write('-------------------------------- \n')
-	txtfile.write(f' Candidates: {(candidates)} \n ')
-	txtfile.write('-------------------------------- \n')
+	#txtfile.write(f' Candidates: {(candidates)} \n ')
+	#txtfile.write('-------------------------------- \n')
 	txtfile.write(f'Khan: {(Khancount/votecount):%} percent of the vote, with {Khancount} votes total. \n')
 	txtfile.write(f"O'Tooley: {(OTooleycount/votecount):%} percent of the vote, with {OTooleycount} votes total. \n")
 	txtfile.write(f'Li: {(Licount/votecount):%} percent of the vote, with {Licount} votes total. \n')

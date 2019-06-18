@@ -66,9 +66,19 @@ with open(file, newline='') as csvfile:
 	print(f'Greatest Decrease in Losses: {mindate, minval} \n ')
 	
 #Export the Financial Analysis to a text file
-	
-	
-	
+curdir = os.getcwd()
+file = os.path.join(curdir, 'Resources', 'financial_analysis.txt')
+with open(file, 'w') as txtfile:	
+	txtfile.write('Financial Analysis \n') 
+	txtfile.write('-------------------------------- \n')	 
+	txtfile.write(f'Total Months: {len(months)} \n ')
+	#print('Net Total: $' + sum(float(x) for x in netTotal) + ' \n')
+	txtfile.write(f'Net Total: {sum(netTotal)} \n')
+	txtfile.write(f'Average Change:  {round(sum(diffs[1:])/len(diffs[1:]))} \n')	
+	txtfile.write(f'Greatest Increase in Profits: {maxdate, maxval} \n ')
+	txtfile.write(f'Greatest Decrease in Losses: {mindate, minval} \n ')
+
+txtfile.close()
 	
 	
 	
