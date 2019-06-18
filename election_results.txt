@@ -1,8 +1,0 @@
-Election Results 
--------------------------------- 
- Total Votes: 3521001 
- -------------------------------- 
- Candidates: {'Li', 'Khan', "O'Tooley", 'Correy'} 
- -------------------------------- 
-Khan: 63.000011% percent of the vote, with 2218231 votes total.O'Tooley: 2.999999% percent of the vote, with 105630 votes total.Li: 13.999996% percent of the vote, with 492940 votes total.Correy: 19.999994% percent of the vote, with 704200 votes total.
- Winner is Khan 

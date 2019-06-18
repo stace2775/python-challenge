@@ -1,6 +1,6 @@
 ## Description:
 #	PYBANK homework assignment.  This script pulls data from budget_data.csv and returns
-#	a summary to the terminal and to a PyBank_Summary.csv file.  
+#	a summary to the terminal and to a financial_analysis.txt file.  
 #
 # Modification History:
 #	DD-MM-YYY 	Author			Description

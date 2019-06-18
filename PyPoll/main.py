@@ -1,6 +1,6 @@
 ## Description:
 #	PYPOLL homework assignment.  This script pulls data from election_data.csv and returns
-#	a summary to the terminal and to a PyPoll_Summary.csv file.  
+#	a summary to the terminal and to a election_results.txt file.  
 #
 # Modification History:
 #	DD-MM-YYY 	Author			Description
