@@ -7,7 +7,6 @@
 #	12-06-2019	Stacey Smith	Initial Creation
 #
 
-
 import os
 import csv
 
@@ -17,17 +16,18 @@ file = os.path.join(curdir, 'Resources', 'budget_data.csv')
 with open(file, newline='') as csvfile:
 	csvreader = csv.reader(csvfile, delimiter=",")
 	csvheader = next(csvreader)
-	#print(f'CSV Header {csvheader}')
-	#next(csvreader) #skips header so it's not added to the list
 
+#create lists for the months, the profit/loss, and to hold the difference in p/l from month-to-month
 	months=[]
 	netTotal=[]
 	diffs=[]
 	
+#initializing values
 	firstval = 0
 	maxval = 0
 	minval = 9999999
 
+#looping through the file to build the lists and calculate the difference and the max/min p/l values with corresponding dates
 	for row in csvreader:
 
 		months.append(row[0])
@@ -43,15 +43,6 @@ with open(file, newline='') as csvfile:
 			minval = diffval
 			mindate = row[0]
 
-
-	#print(diffs[1:])
-
-	#zipdiffs = zip(months, diffs)
-	#print(set(zipdiffs))
-	#for x in zipdiffs:
-
-	#print(min(zipdiffs))
-		
 
 		
 #Print Financial Analysis to the terminal
@@ -70,7 +61,6 @@ with open(file, newline='') as csvfile:
 	
 #The greatest increase in profits (date and amount) over the entire period
 	print(f'Greatest Increase in Profits: {maxdate, maxval} \n ')
-
 
 #The greatest decrease in losses (date and amount) over the entire period	
 	print(f'Greatest Decrease in Losses: {mindate, minval} \n ')

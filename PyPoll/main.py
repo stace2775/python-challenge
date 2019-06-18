@@ -15,7 +15,6 @@
 #  How do I redirect the terminal output to a text file without having to duplicate that whole block of print business. 
 #
 
-
 import os
 import csv
 
@@ -25,9 +24,10 @@ file = os.path.join(curdir, 'Resources', 'election_data.csv')
 with open(file, newline='') as csvfile:
 	csvreader = csv.reader(csvfile, delimiter=",")
 	csvheader = next(csvreader)
-	#print(f'CSV Header {csvheader}') VoterID, County, Candidate
-	#next(csvreader) #skips header so it's not added to the list
-
+	
+#iterating through the election_data.csv file and creating a separate list for each candidate.
+#also creating a set for candidates to pull the unique names but can't figure out how to use it
+#to create variables for the names so I can use them instead. 
 	Khanvotes=[]
 	OTooleyvotes=[]
 	Livotes=[]
@@ -48,25 +48,19 @@ with open(file, newline='') as csvfile:
 
 csvfile.close()
 
+#counting the votes for each candidate
 Khancount = len(Khanvotes)
 OTooleycount = len(OTooleyvotes)
 Licount = len(Livotes)
 Correycount = len(Correyvotes)
 
+#counting all the votes
 votecount = len(votes)
-
-#print(Khancount)
-#print(OTooleycount)
-#print(Licount)
-#print(Correycount)
-
-
 
 
 #Print Election Results to the terminal
 print('Election Results \n') 
 print('-------------------------------- \n')	 
-
 
 #The total number of votes cast
 print(f' Total Votes: {votecount} \n ')
@@ -77,12 +71,10 @@ print(f' Candidates: {(candidates)} \n ')
 print('-------------------------------- \n')
 
 #The percentage of votes each candidate won
-print(f'Khan: {(Khancount/votecount):2%} percent of the vote, with {Khancount} votes total.')
-print(f"O'Tooley: {(OTooleycount/votecount):2%} percent of the vote, with {OTooleycount} votes total.")
-print(f'Li: {(Licount/votecount):2%} percent of the vote, with {Licount} votes total.')
-print(f'Correy: {(Correycount/votecount):2%} percent of the vote, with {Correycount} votes total.')
-#The total number of votes each candidate won
-
+print(f'Khan: {(Khancount/votecount):%} percent of the vote, with {Khancount} votes total. \n')
+print(f"O'Tooley: {(OTooleycount/votecount):%} percent of the vote, with {OTooleycount} votes total. \n")
+print(f'Li: {(Licount/votecount):%} percent of the vote, with {Licount} votes total. \n')
+print(f'Correy: {(Correycount/votecount):%} percent of the vote, with {Correycount} votes total. \n')
 
 #The winner of the election based on popular vote.
 mostvotes=[Khancount, OTooleycount, Licount, Correycount]
@@ -96,9 +88,31 @@ if winner == Licount:
 if winner == Correycount:
 	print("\n Winner is Correy \n")
 
+	
+#Export the Financial Analysis to a text file
 
-output_path = os.path.join(curdir, 'Resources', 'election_results.txt')
+curdir = os.getcwd()
+file = os.path.join(curdir, 'Resources', 'election_results.txt')
+with open(file, 'w') as txtfile:
 
-with open(output_path, 'w') as writefile:
-    #print('Filename:', "election_results.txt", file=writefile) 
-	#print(writefile)
+	txtfile.write('Election Results \n') 
+	txtfile.write('-------------------------------- \n')	 
+	txtfile.write(f' Total Votes: {votecount} \n ')
+	txtfile.write('-------------------------------- \n')
+	txtfile.write(f' Candidates: {(candidates)} \n ')
+	txtfile.write('-------------------------------- \n')
+	txtfile.write(f'Khan: {(Khancount/votecount):%} percent of the vote, with {Khancount} votes total. \n')
+	txtfile.write(f"O'Tooley: {(OTooleycount/votecount):%} percent of the vote, with {OTooleycount} votes total. \n")
+	txtfile.write(f'Li: {(Licount/votecount):%} percent of the vote, with {Licount} votes total. \n')
+	txtfile.write(f'Correy: {(Correycount/votecount):%} percent of the vote, with {Correycount} votes total. \n')
+
+	if winner == Khancount:
+		txtfile.write("\n Winner is Khan \n")
+	if winner == OTooleycount:
+		txtfile.write("\n Winner is O'Tooley \n")
+	if winner == Licount:
+		txtfile.write("\n Winner is Li \n")
+	if winner == Correycount:
+		txtfile.write("\n Winner is Correy \n")
+
+txtfile.close()
