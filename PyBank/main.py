@@ -59,21 +59,21 @@ with open(file, newline='') as csvfile:
 	print('-------------------------------- \n')	 
 
 #The total number of months included in the dataset
-	print(f' Total Months: {len(months)} \n ')
+	print(f'Total Months: {len(months)} \n ')
 
 #The net total amount of "Profit/Losses" over the entire period
 	#print('Net Total: $' + sum(float(x) for x in netTotal) + ' \n')
 	print(f'Net Total: {sum(netTotal)} \n')
 
 #The average of the changes in "Profit/Losses" over the entire period
-	print(f' Average Change:  {sum(diffs[1:])/len(diffs[1:])} \n')	
+	print(f'Average Change:  {round(sum(diffs[1:])/len(diffs[1:]))} \n')	
 	
 #The greatest increase in profits (date and amount) over the entire period
-	print(f' Greatest Increase in Profits: {maxdate, maxval} \n ')
+	print(f'Greatest Increase in Profits: {maxdate, maxval} \n ')
 
 
 #The greatest decrease in losses (date and amount) over the entire period	
-	print(f' Greatest Decrease in Losses: {mindate, minval} \n ')
+	print(f'Greatest Decrease in Losses: {mindate, minval} \n ')
 	
 #Export the Financial Analysis to a text file
 	
