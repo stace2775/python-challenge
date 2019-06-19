@@ -7,9 +7,11 @@
 #	12-06-2019	Stacey Smith	Initial Creation
 #
 
+#Dependencies
 import os
 import csv
 
+#open the data file
 curdir = os.getcwd()
 file = os.path.join(curdir, 'Resources', 'budget_data.csv')
 

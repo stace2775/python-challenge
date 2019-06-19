@@ -7,17 +7,11 @@
 #	17-06-2019	Stacey Smith	Initial Creation
 #
 
-#  Can I pull values out of a set and assign them to variables to take care of the candidate names so 
-#  I don't have to explicitly name them?
-#
-#  How do I format the percentages to only show 2 decimals?  Round isn't working. 
-#
-#  How do I redirect the terminal output to a text file without having to duplicate that whole block of print business. 
-#
-
+#Dependencies
 import os
 import csv
 
+#open the data file
 curdir = os.getcwd()
 file = os.path.join(curdir, 'Resources', 'election_data.csv')
 
@@ -26,14 +20,12 @@ with open(file, newline='') as csvfile:
 	csvheader = next(csvreader)
 	
 #iterating through the election_data.csv file and creating a separate list for each candidate.
-#also creating a set for candidates to pull the unique names but can't figure out how to use it
-#to create variables for the names so I can use them instead. 
 	Khanvotes=[]
 	OTooleyvotes=[]
 	Livotes=[]
 	Correyvotes=[]
 	votes=[]
-	candidates=set()
+	#candidates=set()
 	for row in csvreader:
 		if row[2] == 'Khan':
 			Khanvotes.append(row[0])
@@ -44,8 +36,9 @@ with open(file, newline='') as csvfile:
 		if row[2] == 'Correy':
 			Correyvotes.append(row[0])
 		votes.append(row[0])
-		candidates.add(row[2])
+		#candidates.add(row[2])
 
+#Done with the file, close it
 csvfile.close()
 
 #counting the votes for each candidate
